@@ -6,7 +6,7 @@ let cobrinha;
 function setup() {
   createCanvas(400,400);
   cobrinha = new cobra();
-  frameRate(50);
+  frameRate(10);
   posicaoComida();
 }
 
@@ -14,7 +14,9 @@ function draw() {
   background(51)
   cobrinha.show();
   cobrinha.update();
-  posicaoComida();
+  if(cobrinha.come(comida)){
+    posicaoComida();
+  }
   fill(255, 8, 10);
   rect(comida.x,comida.y,tamanho,tamanho);;
 }
