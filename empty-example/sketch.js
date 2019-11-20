@@ -4,17 +4,26 @@ let cobrinha;
 
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400,400);
   cobrinha = new cobra();
-  frameRate(100);
+  frameRate(50);
+  posicaoComida();
 }
 
 function draw() {
   background(51)
   cobrinha.show();
   cobrinha.update();
+  posicaoComida();
+  fill(255, 8, 10);
+  rect(comida.x,comida.y,tamanho,tamanho);;
 }
-
+function posicaoComida() {
+  var coluna = floor(width/tamanho);
+  var fila = floor(height/tamanho);
+  comida = createVector(floor(random(coluna)), floor(random(fila)));
+  comida.mult(tamanho);
+}
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     cobrinha.dir(0, -1);
@@ -25,4 +34,5 @@ function keyPressed() {
   } else if (keyCode === RIGHT_ARROW) {
     cobrinha.dir(1, 0);
   }
+ 
 }
